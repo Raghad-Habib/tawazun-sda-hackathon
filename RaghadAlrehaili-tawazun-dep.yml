@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tawazun-deployment
+  namespace: raghadalrehaili-tawazun
+  labels:
+    app: tawazun
+    name: RaghadAlrehaili
+spec:
+  template:
+    metadata:
+      name: tawazun-pod
+      labels:
+        app: tawazun
+    spec:
+      containers:
+        - name: tawazun
+          image: raghadhabib/tawazun:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_URL
+              value: "mysqldb-service"
+            - name: DB_NAME
+              value: "mysql"
+            - name: DB_PORT
+              value: 3306
+            - name: DB_USERNAME
+              value: "mysql"
+            - name: DB_PASSWORD
+              value: "mysql"         
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tawazun
