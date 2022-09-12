@@ -28,7 +28,13 @@ spec:
             - name: DB_USERNAME
               value: mysql
             - name: DB_PASSWORD
-              value: mysql         
+              value: mysql
+          livenessProbe:
+            httpGet:
+              path: /home
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 3         
   replicas: 1
   selector:
     matchLabels:

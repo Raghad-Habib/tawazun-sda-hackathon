@@ -26,7 +26,15 @@ spec:
             - name: MYSQL_PASSWORD
               value: "mysql"
             - name: MYSQL_ROOT_PASSWORD
-              value: "mysql"         
+              value: "mysql"   
+          livenessProbe: 
+            tcpSocket:
+              port: 3306
+            initialDelaySeconds: 2  
+            periodSeconds: 2 
+            timeoutSeconds: 1 
+            successThreshold: 1 
+            failureThreshold: 3      
           volumeMounts:
             - mountPath: /mysqldb/volume/data
               name: mysqldb-volume
