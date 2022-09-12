@@ -18,6 +18,13 @@ spec:
           image: raghadhabib/tawazun:latest
           ports:
             - containerPort: 8080
+          resources: 
+            requests: 
+              memory: "260Mi"
+              cpu: "220m"
+            limits:
+              memory: "550Mi"
+              cpu: "550m"
           env:
             - name: DB_URL
               value: mysql
