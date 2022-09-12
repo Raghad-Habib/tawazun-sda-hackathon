@@ -36,12 +36,16 @@ spec:
               value: mysql
             - name: DB_PASSWORD
               value: mysql
-          livenessProbe:
-            httpGet:
-              path: /home
-              port: 8080
-            initialDelaySeconds: 3
-            periodSeconds: 3         
+          startupProbe:
+              initialDelaySeconds: 4
+              periodSeconds: 2
+              timeoutSeconds: 1
+              successThreshold: 1
+              failureThreshold: 3
+              exec:
+                command:
+                - touch
+                - hello.txt      
   replicas: 1
   selector:
     matchLabels:
