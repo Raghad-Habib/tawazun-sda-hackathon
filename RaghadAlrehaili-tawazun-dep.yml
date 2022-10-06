@@ -35,17 +35,7 @@ spec:
             - name: DB_USERNAME
               value: mysql
             - name: DB_PASSWORD
-              value: mysql
-          startupProbe:
-              initialDelaySeconds: 4
-              periodSeconds: 2
-              timeoutSeconds: 1
-              successThreshold: 1
-              failureThreshold: 3
-              exec:
-                command:
-                - touch
-                - hello.txt      
+              value: mysql     
   replicas: 1
   selector:
     matchLabels:
